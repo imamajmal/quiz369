@@ -42,22 +42,22 @@ public class SecurityConfig {
 
                 // ✅ ✅ FORM LOGIN (Browser)
                 .formLogin(form -> form
-                        .loginPage("/web/login")               // Show login.html
-                        .loginProcessingUrl("/web/login")      // POST from HTML form
-                        .defaultSuccessUrl("/web/redirect", true) // redirect based on role
+                        .loginPage("/login")               // Show login.html
+                        .loginProcessingUrl("/login")      // POST from HTML form
+                        .defaultSuccessUrl("/redirect", true) // redirect based on role
                         .permitAll()
                 )
 
                 // ✅ LOGOUT for browser
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/web/login?logout=true")
+                        .logoutSuccessUrl("/login?logout=true")
                         .permitAll()
                 )
 
                 // ✅ PUBLIC ENDPOINTS
                 .authorizeHttpRequests(auth -> auth
-                
+                .requestMatchers("/", "/register", "/login", "/css/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers("/web/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")  
                         .requestMatchers("/participant/**").hasRole("PARTICIPANT")

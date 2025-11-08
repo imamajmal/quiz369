@@ -16,7 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/web")
+@RequestMapping("/")
 @RequiredArgsConstructor
 public class AuthWebController {
 
@@ -80,7 +80,7 @@ public String doLogin(@RequestParam String username,
     public String redirectAfterLogin(Authentication auth) {
 
         if (auth == null) {
-            return "redirect:/web/login";
+            return "redirect:/login";
         }
 
         String username = auth.getName();
@@ -94,7 +94,7 @@ public String doLogin(@RequestParam String username,
             return "redirect:/participant/dashboard";
         }
 
-        return "redirect:/web/login";
+        return "redirect:/login";
     }
 }
 
