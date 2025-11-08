@@ -99,10 +99,6 @@
         box-shadow: 0 8px 22px rgba(0, 128, 0, 0.4);
       }
 
-      .email-box {
-        margin-top: 20px;
-      }
-
       hr {
         border-color: #d9e6ff;
         opacity: 0.6;
@@ -139,20 +135,6 @@
               <label th:for="${'opt_' + op.id}" th:text="${op.text}"></label>
             </div>
             <hr />
-          </div>
-
-          <!-- ✅ Email box added -->
-          <div class="email-box">
-            <label class="form-label fw-bold"
-              >Enter Email to Receive Result:</label
-            >
-            <input
-              type="email"
-              name="email"
-              class="form-control"
-              placeholder="example@gmail.com"
-              required
-            />
           </div>
 
           <button class="btn btn-success">Submit ✅</button>

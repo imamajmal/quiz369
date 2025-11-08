@@ -37,10 +37,10 @@ public String showAvailable(Model model) {
     }
 
    @PostMapping("/take/{id}/submit")
-public String submitQuiz(@PathVariable Long id,
-                         @RequestParam Map<String, String> formData,
-                         @RequestParam String email,   // ✅ new parameter
-                         Model model) {
+public String submitQuiz(
+        @PathVariable Long id,
+        @RequestParam Map<String, String> formData,
+        Model model) {
 
     Map<Long, Long> answers = new HashMap<>();
     formData.forEach((key, value) -> {
@@ -51,20 +51,10 @@ public String submitQuiz(@PathVariable Long id,
 
     var result = resultService.saveAttempt(id, "GuestUser", answers);
 
-    // ✅ Auto email sending to user email
-    emailService.sendEmail(
-            email,
-            "Quiz Result",
-            "email_result",
-            Map.of(
-                    "quiz", result.getQuiz().getTitle(),
-                    "score", result.getScore() + " / " + result.getTotalQuestions()
-            )
-    );
-
     model.addAttribute("result", result);
     return "quiz_result";
 }
+
 
 
     @GetMapping("/results")

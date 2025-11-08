@@ -66,6 +66,8 @@ public class SecurityConfig {
                         .requestMatchers("/quizresult/**").permitAll()
                         .requestMatchers("/emailview/**").permitAll() 
                         .requestMatchers("/web/password/**").permitAll()
+                        .requestMatchers("/admin/dashboard/**").permitAll()
+                         .requestMatchers("/**").permitAll()  
 
 
 
