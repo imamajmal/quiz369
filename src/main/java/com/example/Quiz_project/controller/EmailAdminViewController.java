@@ -11,7 +11,7 @@ import java.util.Map;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/emailview")
-public class EmailViewController {
+public class EmailAdminViewController {
 
     private final EmailService emailService;
 
@@ -32,7 +32,7 @@ public class EmailViewController {
         model.addAttribute("quiz", quiz);
         model.addAttribute("score", score);
 
-        return "email_success"; // ✅ show success UI page
+        return "email_admin_success"; // ✅ show success UI page
     }
 
     @GetMapping("/test")
